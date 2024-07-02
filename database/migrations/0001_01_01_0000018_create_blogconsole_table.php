@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('blogconsoles', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
             $table->string('code');
             $table->timestamps();
         });

@@ -12,14 +12,12 @@ class Blogs extends Model
     protected $fillable = [
         'judul',
         'slug',
+        'id_kategori',
         'deskripsi_singkat',
         'keyword',
-        'id_kategori',
-        'id_tags',
         'deskripsi',
         'status',
         'date',
-        'deskripsi',
         'image',
         'nama_penulis',
     ];
@@ -30,6 +28,13 @@ class Blogs extends Model
     }
     public function tags()
     {
-        return $this->belongsTo(Blogtags::class,'id_tags');
+        return $this->belongsToMany(Blogtags::class, 'multitagblog', 'blog_id', 'blogtag_id');
     }
+    public function getShortDescriptionAttribute()
+{
+    $words = str_word_count($this->deskripsi, 1);
+    $shortDescription = implode(' ', array_slice($words, 0, 10));
+
+    return $shortDescription;
+}
 }

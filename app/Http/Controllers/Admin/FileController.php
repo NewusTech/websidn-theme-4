@@ -27,7 +27,7 @@ class FileController extends Controller
         ]);
 
         if ($request->hasFile('path')) {
-            $filePath = $request->file('path')->store('uploads/files', 'public');
+            $filePath = $request->file('path')->store('websidn/uploads/files', 's3');
             $validated['path'] = $filePath;
         }
 
@@ -52,7 +52,7 @@ class FileController extends Controller
         $file = Files::findOrFail($id);
 
         if ($request->hasFile('path')) {
-            $filePath = $request->file('path')->store('uploads/files', 'public');
+            $filePath = $request->file('path')->store('websidn/uploads/files', 's3');
             $validated['path'] = $filePath;
         }
 

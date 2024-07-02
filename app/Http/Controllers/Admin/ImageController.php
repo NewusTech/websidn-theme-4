@@ -33,12 +33,7 @@ class ImageController extends Controller
             'resolusi' => 'required',
             'path' => 'required|image',
         ]);
-        $path = $request->file('path')->store('images', 'public');
-        // $path = $request->file('path')->store('images');
-        // Dapatkan resolusi gambar
-        // $imagePath = Storage::disk('public')->path($path);
-        // list($width, $height) = getimagesize($imagePath);
-        // $resolusi = "{$width}x{$height}";
+        $path = $request->file('path')->store('websidn/images', 's3');
 
         Images::create([
             'resolusi' => $validated['resolusi'],
@@ -66,7 +61,7 @@ class ImageController extends Controller
         $path = $image->path;
 
         if ($request->hasFile('path')) {
-            $path = $request->file('path')->store('images', 'public');
+            $path = $request->file('path')->store('websidn/images', 's3');
         }
 
         $image->update([

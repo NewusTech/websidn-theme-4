@@ -47,7 +47,7 @@
         <div style="margin-left: 6%">
             @foreach ($logo as $logos)
                 @if ($logos->images)
-                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid " alt="Image" style="width: 200px; height: 65px; object-fit: cover; ">
+                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                 @else
                     Gambar tidak tersedia
                 @endif
@@ -74,7 +74,7 @@
 
     <!-- Page Header Start -->
     @foreach ($header as $headers)
-    <div class="container-fluid py-5 mb-2" style="background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('{{ asset('storage/' . $headers->images->path) }}') center center no-repeat; background-size: cover;">
+    <div class="container-fluid py-5 mb-2" style="background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
         <div class="container py-5">
             <h1 class="display-3 text-white mb-3 animated slideInDown">Tentang Kami</h1>
             <nav aria-label="breadcrumb animated slideInDown">
@@ -96,7 +96,7 @@
                 <div class="col-lg-5 ps-lg-0" style="min-height: 400px;">
                     <div class="position-relative h-100">
                         <div class="video">
-                            <img class="position-absolute img-fluid w-100 h-100" src="{{ asset('storage/' . $abouts->gambar) }}" style="object-fit: cover;" alt="">
+                            <img class="position-absolute img-fluid w-100 h-100" src="{{ Storage::disk('s3')->url($abouts->gambar) }}" style="object-fit: cover;" alt="">
                             <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="{{ $abouts->video }}" data-bs-target="#videoModal">
                                 <span></span>
                             </button>
@@ -111,7 +111,7 @@
                         <h2 class="mb-3">{{ $abouts->judul }}</h2>
                         <p class="mb-4 pb-2">{{ $abouts->text }}</p>
 
-                        <a href="/tentang-kami" class="btn btn-primary py-3 px-5">Explore More</a>
+                        {{-- <a href="/tentang-kami" class="btn btn-primary py-3 px-5">Explore More</a> --}}
                     </div>
                 </div>
                 @endforeach
@@ -148,13 +148,14 @@
                 <div class="col-lg-4 col-md-6">
                     @foreach ($logo as $logos)
                         @if ($logos->images)
-                            <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                            <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                         @else
                             Gambar tidak tersedia
                         @endif
                     @endforeach
-                    <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, officiis, praesentium corporis odit labore voluptas quis voluptatem temporibus </p>
-                    
+                    @foreach ($about as $abouts)
+                        <p class="mb-2">{{ $abouts->text }}</p>
+                    @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6">
                     

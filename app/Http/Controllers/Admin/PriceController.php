@@ -31,7 +31,7 @@ class PriceController extends Controller
             'image' => 'required|image',
         ]);
 
-        $image = $request->file('image')->store('prices', 'public');
+        $image = $request->file('image')->store('websidn/prices', 's3');
 
         Prices::create([
             'judul' => $validated['judul'],
@@ -68,7 +68,7 @@ class PriceController extends Controller
         $path = $price->path;
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('prices', 'public');
+            $image = $request->file('image')->store('websidn/prices', 's3');
         }
 
         $price->update([

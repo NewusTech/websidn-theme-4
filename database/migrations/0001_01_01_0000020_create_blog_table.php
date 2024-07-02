@@ -15,13 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('slug');
+            $table->foreignId('id_kategori')->nullable()->references('id')->on('blogkategoris')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->string('deskripsi_singkat');
             $table->string('keyword');
-            $table->foreignId('id_kategori')->nullable()->references('id')->on('blogkategoris')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreignId('id_tags')->nullable()->references('id')->on('blogtags')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->string('status');
-            $table->date('date');
             $table->longText('deskripsi');
+            $table->string('status');
+            $table->date('date');  
             $table->string('image');
             $table->string('nama_penulis');
             $table->timestamps();

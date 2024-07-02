@@ -3,19 +3,21 @@
 namespace App\Http\Controllers\Admin\Blogger;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blogkategoris;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str; // Pastikan ini diimpor
 
 class BlogkategoriController extends Controller
 {
     public function Blogkategoriindex()
     {
         $blogkategoris = Blogkategoris::all();
-        return view('admin.blogkategoris.index', compact('blogkategoris'));
+        return view('admin.blog.kategori.index', compact('blogkategoris'));
     }
 
     public function Blogkategoricreate()
     {
-        return view('admin.blogkategoris.create');
+        return view('admin.blog.kategori.create');
     }
 
     public function Blogkategoristore(Request $request)
@@ -34,7 +36,7 @@ class BlogkategoriController extends Controller
     public function Blogkategoriedit($id)
     {
         $blogkategori = Blogkategoris::findOrFail($id);
-        return view('admin.blogkategoris.edit', compact('blogkategori'));
+        return view('admin.blog.kategori.edit', compact('blogkategori'));
     }
 
     public function Blogkategoriupdate(Request $request, $id)
@@ -54,7 +56,7 @@ class BlogkategoriController extends Controller
     public function Blogkategorishow($id)
     {
         $blogkategori = Blogkategoris::findOrFail($id);
-        return view('admin.blogkategoris.show', compact('blogkategori'));
+        return view('admin.blog.kategori.view', compact('blogkategori'));
     }
 
     public function Blogkategoridestroy($id)

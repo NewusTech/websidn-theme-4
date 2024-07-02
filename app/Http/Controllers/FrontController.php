@@ -14,6 +14,10 @@ use App\Models\Testimonis;
 use App\Models\Contacts;
 use App\Models\Abouts;
 use App\Models\Files;
+use App\Models\Blogconsole;
+use App\Models\Blogkategoris;
+use App\Models\Blogs;
+use App\Models\Blogtags;
 class FrontController extends Controller
 {
     
@@ -48,10 +52,12 @@ class FrontController extends Controller
         $service = Cards::all()->where('kategori', 'Layanan');
         $price = Prices::all();
         $contact = Contacts::all();
+        $about = Abouts::all();
         $logo= Homes::with(['images','texts'])->where('kategori', 'logo')->take(1)->get();
         $header= Homes::with(['images','texts'])->where('kategori', 'header')->take(1)->get();
 
         return view('service',compact(
+            'about',
             'service',
             'price',
             'contact',
@@ -80,9 +86,11 @@ class FrontController extends Controller
         $contact = Contacts::all();
         $logo= Homes::with(['images','texts'])->where('kategori', 'logo')->take(1)->get();
         $header= Homes::with(['images','texts'])->where('kategori', 'header')->take(1)->get();
+        $about = Abouts::all();
         return view('gallery',compact(
             'gallery',
             'contact',
+            'about',
             'logo',
             'header',
         ));
@@ -90,6 +98,7 @@ class FrontController extends Controller
 
     public function PortfolioShow()
     {   
+        $about = Abouts::all();
         $portofolio = Cards::all()->where('kategori', 'Portofolio');
         $contact = Contacts::all();
         $logo= Homes::with(['images','texts'])->where('kategori', 'logo')->take(1)->get();
@@ -97,21 +106,45 @@ class FrontController extends Controller
         return view('portfolio',compact(
             'portofolio',
             'contact',
+            'about',
             'logo',
             'header',
         ));
     }
 
-    public function BlogShow()
-    {   
+    public function BlogDetailShow($slug)
+    {
+        $carousel= Corosels::all()->take(1);
+        $about = Abouts::all();
         $logo= Homes::with(['images','texts'])->where('kategori', 'logo')->take(1)->get();
         $header= Homes::with(['images','texts'])->where('kategori', 'header')->take(1)->get();
         $contact = Contacts::all();
+        $blog = Blogs::where('slug', $slug)->firstOrFail();
+
+        return view('blog-details', compact(
+            'blog',
+            'carousel',
+            'contact',
+            'about',
+            'logo',
+            'header',
+        ));
+    }
+    public function BlogShow()
+    {   
+        $blog = Blogs::with(['kategoris'])->get();
         
 
-        return view('blog',compact(
+        $about = Abouts::all();
+        $logo= Homes::with(['images','texts'])->where('kategori', 'logo')->take(1)->get();
+        $header= Homes::with(['images','texts'])->where('kategori', 'header')->take(1)->get();
+        $contact = Contacts::all();
 
+        return view('blog',compact(
+            
+            'blog',
             'contact',
+            'about',
             'logo',
             'header',
         ));
@@ -119,6 +152,7 @@ class FrontController extends Controller
 
     public function ContactShow()
     {   
+        $about = Abouts::all();
         $logo= Homes::with(['images','texts'])->where('kategori', 'logo')->take(1)->get();
         $header= Homes::with(['images','texts'])->where('kategori', 'header')->take(1)->get();
         $contact = Contacts::all();
@@ -128,10 +162,12 @@ class FrontController extends Controller
             'header',
             'contact',
             'logo',
+            'about',
         ));
     }
     public function FileBrosurShow()
     {   
+        $about = Abouts::all();
         $file_brosur = Files::all()->where('kategori', 'Brosur');
         $file_price = Files::all()->where('kategori', 'Pricelist');
         $file_portfolio = Files::all()->where('kategori', 'Portofolio');
@@ -143,6 +179,7 @@ class FrontController extends Controller
             'file_brosur',
             'file_price',
             'file_portfolio',
+            'about',
             'contact',
             'logo',
             'header',
@@ -150,6 +187,7 @@ class FrontController extends Controller
     }
     public function FilePriceShow()
     {   
+        $about = Abouts::all();
         $file_price = Files::all()->where('kategori', 'Pricelist');
         $contact = Contacts::all();
         $logo= Homes::with(['images','texts'])->where('kategori', 'logo')->take(1)->get();
@@ -159,11 +197,13 @@ class FrontController extends Controller
             'file_price',
             'contact',
             'logo',
+            'about',
             'header',
         ));
     }
     public function FilePortofolioShow()
     {   
+        $about = Abouts::all();
         $file_portfolio = Files::all()->where('kategori', 'Portofolio');
         $contact = Contacts::all();
         $logo= Homes::with(['images','texts'])->where('kategori', 'logo')->take(1)->get();
@@ -173,6 +213,7 @@ class FrontController extends Controller
             'file_portfolio',
             'contact',
             'logo',
+            'about',
             'header',
         ));
     }

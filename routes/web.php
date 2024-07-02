@@ -22,9 +22,10 @@ use App\Http\Controllers\Admin\Components\CoroselHomeController;
 use App\Http\Controllers\Admin\Components\CardHomeController;
 use App\Http\Controllers\Admin\Blogger\BlogController;
 use App\Http\Controllers\Admin\Blogger\BlogkategoriController;
+use App\Http\Controllers\Admin\Blogger\BlogtagController;
+use App\Http\Controllers\Admin\Blogger\BlogconsoleController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
-
 
 
 route::get('/', [FrontController::class, 'LogoShow']);
@@ -37,22 +38,29 @@ route::get('/kontak-kami', [FrontController::class, 'ContactShow']);
 route::get('/document-brosur', [FrontController::class, 'FileBrosurShow']);
 route::get('/document-price', [FrontController::class, 'FilePriceShow']);
 route::get('/document-portofolio', [FrontController::class, 'FilePortofolioShow']);
+
 Route::get('/konsultasi', function () {
     return view('welcome');
 });
 
 route::get('/dashboard', [DashboardController::class, 'indexPage']);
 route::get('/about', [AboutController::class, 'indexPage']);
-// route::get('/components', [ComponentsController::class, 'ComponentPage']);
+route::get('/components', [ComponentsController::class, 'ComponentPage']);
 // route::get('/testimoni', [TestimoniController::class, 'TestimoniPage']);
 route::get('/insertLayanan', [InsertController::class, 'InsertPage']);
 route::get('/contact', [ContactController::class, 'ContactPage']);
 
+// Route::controller(LoginController::class)->group(function () {
+//     route::get('/login','LoginForm')->middleware('admin');
+//     route::post('/login','login');
+//     route::post('/logout','logout');
+// });
+
 Route::controller(LoginController::class)->group(function () {
-    route::get('/login','LoginForm')->middleware(AdminMiddleware::class);
+    route::get('/login','LoginForm');  // No middleware here
     route::post('/login','login');
     route::post('/logout','logout');
-});
+  });
 Route::controller(ImageController::class)->group(function () {
     Route::get('/image', 'ImageIndex')->name('image.index');
     Route::get('/image/create', 'ImageCreate')->name('image.create');
@@ -107,10 +115,6 @@ Route::controller(PriceController::class)->group(function () {
     Route::get('/price/{id}', 'PriceView')->name('price.view');
     Route::delete('/price/{id}', 'PriceDelete')->name('price.delete');
 });
-// Route::controller(CoroselController::class)->group(function () {
-//     route::get('/coroselview','CoroselPageView');
-//     route::get('/coroseledit','CoroselPageEdit');
-// });
 Route::controller(BlogController::class)->group(function () {
     Route::get('/blogs', 'Blogindex')->name('blog.index');
     Route::get('/blogs/create', 'Blogcreate')->name('blog.create');
@@ -203,3 +207,5 @@ Route::controller(AboutController::class)->group(function () {
 //     route::get('/textview','TextPageView');
 //     route::get('/textedit','TextPageEdit');
 // });
+
+Route::get('/{slug}', [FrontController::class, 'BLogDetailShow']);

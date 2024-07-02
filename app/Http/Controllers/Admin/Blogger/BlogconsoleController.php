@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Admin\Blogger;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blogconsole;
 use Illuminate\Http\Request;
 
 class BlogconsoleController extends Controller
 {
-    public function index()
+    public function Blogconsoleindex()
     {
         $blogconsoles = Blogconsole::all();
-        return view('admin.blogconsoles.index', compact('blogconsoles'));
+        return view('admin.blog.console.index', compact('blogconsoles'));
     }
 
-    public function create()
+    public function Blogconsolecreate()
     {
-        return view('admin.blogconsoles.create');
+        return view('admin.blog.console.create');
     }
 
-    public function store(Request $request)
+    public function Blogconsolestore(Request $request)
     {
         $validated = $request->validate([
-            'judul' => 'required|string|max:255',
             'code' => 'required|string',
         ]);
 
@@ -30,16 +30,15 @@ class BlogconsoleController extends Controller
         return redirect()->route('blogconsole.index')->with('success', 'Blog console created successfully');
     }
 
-    public function edit($id)
+    public function Blogconsoleedit($id)
     {
         $blogconsole = Blogconsole::findOrFail($id);
-        return view('admin.blogconsoles.edit', compact('blogconsole'));
+        return view('admin.blog.console.edit', compact('blogconsole'));
     }
 
-    public function update(Request $request, $id)
+    public function Blogconsoleupdate(Request $request, $id)
     {
         $validated = $request->validate([
-            'judul' => 'required|string|max:255',
             'code' => 'required|string',
         ]);
 
@@ -49,13 +48,13 @@ class BlogconsoleController extends Controller
         return redirect()->route('blogconsole.index')->with('success', 'Blog console updated successfully');
     }
 
-    public function show($id)
+    public function Blogconsoleshow($id)
     {
         $blogconsole = Blogconsole::findOrFail($id);
-        return view('admin.blogconsoles.show', compact('blogconsole'));
+        return view('admin.blog.console.view', compact('blogconsole'));
     }
 
-    public function destroy($id)
+    public function Blogconsoledestroy($id)
     {
         $blogconsole = Blogconsole::findOrFail($id);
         $blogconsole->delete();

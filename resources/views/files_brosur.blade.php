@@ -47,7 +47,7 @@
         <div style="margin-left: 6%">
             @foreach ($logo as $logos)
                 @if ($logos->images)
-                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid " alt="Image" style="width: 200px; height: 65px; object-fit: cover; ">
+                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                 @else
                     Gambar tidak tersedia
                 @endif
@@ -74,7 +74,7 @@
 
     <!-- Page Header Start -->
     @foreach ($header as $headers)
-    <div class="container-fluid py-5 mb-2" style="background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('{{ asset('storage/' . $headers->images->path) }}') center center no-repeat; background-size: cover;">
+    <div class="container-fluid py-5 mb-2" style="background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
         <div class="container py-5">
             <h1 class="display-3 text-white mb-3 animated slideInDown">Brosur</h1>
         </div>
@@ -93,7 +93,7 @@
                         <div class="p-4 text-center border border-3 border-dark ">
                             <h4 class="mb-3">Brosur {{ $loop->iteration }}</h4>
                             <p>{{ $item->detail }}</p>
-                            <a class="btn btn-primary w-100 text-white" href="{{ asset('storage/' . $item->path) }}" >Download</a>
+                            <a class="btn btn-primary w-100 text-white" href="{{ Storage::disk('s3')->url($item->path) }}" >Download</a>
                         </div>
                     </div>
                 </div>
@@ -109,16 +109,20 @@
     <div class="container-fluid bg-dark text-light footer mt-2 pt-2 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-4">
             <div class="row g-5 px-5">
-                <div class="col-lg-4 col-md-6">
-                    @foreach ($logo as $logos)
-                        @if ($logos->images)
-                            <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
-                        @else
-                            Gambar tidak tersedia
-                        @endif
-                    @endforeach
-                    <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, officiis, praesentium corporis odit labore voluptas quis voluptatem temporibus </p>
-                    
+                <div class="col-lg-4 col-md-6 col-sm-12 justify-content-start">
+                    <div class="footer-item">
+                        @foreach ($logo as $logos)
+                            @if ($logos->images)
+                                <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                            @else
+                                Gambar tidak tersedia
+                            @endif
+                        @endforeach
+                        @foreach ($about as $abouts)
+                        <p class="text-white">{{ $abouts->text }}</p>
+                        @endforeach
+                        
+                    </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     

@@ -13,8 +13,9 @@ class Blogtags extends Model
         'tags',
         'slug',
     ];
-    public function blog()
+
+    public function blogs()
     {
-        return $this->hasMany(Blogs::class, 'id_tag');
+        return $this->belongsToMany(Blogs::class, 'multitagblog', 'blogtag_id', 'blog_id');
     }
 }

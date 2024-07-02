@@ -10,7 +10,6 @@ class Blogconsole extends Model
     use HasFactory;
 
     protected $fillable = [
-        'judul',
         'code',
     ];
 }

@@ -47,7 +47,7 @@
         <div style="margin-left: 6%">
             @foreach ($logo as $logos)
                 @if ($logos->images)
-                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid " alt="Image" style="width: 200px; height: 65px; object-fit: cover; ">
+                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                 @else
                     Gambar tidak tersedia
                 @endif
@@ -74,7 +74,7 @@
 
     <!-- Page Header Start -->
     @foreach ($header as $headers)
-    <div class="container-fluid py-5 mb-2" style="background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('{{ asset('storage/' . $headers->images->path) }}') center center no-repeat; background-size: cover;">
+    <div class="container-fluid py-5 mb-2" style="background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
         <div class="container py-5">
             <h1 class="display-3 text-white mb-3 animated slideInDown">Artikel</h1>
             <nav aria-label="breadcrumb animated slideInDown">
@@ -97,63 +97,24 @@
             </div>
             
             <div class="row g-4 portfolio-container">
-                <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                @foreach ($blog as $artikel)
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                     <div class="rounded overflow-hidden">
                         <a href="">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-1.jpg" alt="">
+                            <img class="img-fluid w-100" src="{{ Storage::disk('s3')->url($artikel->image) }}" alt="">
                             
                         </div>
                         <div class="border border-5 border-light border-top-0 p-4">
-                            <h5 class="text-primary fw-medium mb-2">Judul Berita</h5>
-                            <p class="lh-base mb-0 text-dark">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                            <span class="card-text mb-3 text-muted" style="font-size: 14px">{{ $artikel->nama_penulis }} , {{ $artikel->date }}</span>
+                            <h4 class="text-primary fw-medium mt-2 mb-3"><a href="/{{ $artikel->slug }}">{{ $artikel->judul }}</a></h4>
+                            <p class="lh-base mb-3 text-dark mt-3">{{ $artikel->deskripsi_singkat }} .....</p>
+                            <a href="#" class="card-link mt-3">#{{ $artikel->kategoris->kategori }}</a>
                         </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="rounded overflow-hidden">
-                        <a href="">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-2.jpg" alt="">
-                            
-                        </div>
-                        <div class="border border-5 border-light border-top-0 p-4">
-                            <h5 class="text-primary fw-medium mb-2">Judul Berita</h5>
-                            <p class="lh-base mb-0 text-dark">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="rounded overflow-hidden">
-                        <a href="">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-3.jpg" alt="">
-                            
-                        </div>
-                        <div class="border border-5 border-light border-top-0 p-4">
-                            <h5 class="text-primary fw-medium mb-2">Judul Berita</h5>
-                            <p class="lh-base mb-0 text-dark">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="rounded overflow-hidden">
-                        <a href="">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-4.jpg" alt="">
-                            
-                        </div>
-                        <div class="border border-5 border-light border-top-0 p-4">
-                            <h5 class="text-primary fw-medium mb-2">Judul Berita</h5>
-                            <p class="lh-base mb-0 text-dark">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-                
+                @endforeach
             </div>
         </div>
     </div>
@@ -167,12 +128,14 @@
                 <div class="col-lg-4 col-md-6">
                     @foreach ($logo as $logos)
                         @if ($logos->images)
-                            <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                            <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                         @else
                             Gambar tidak tersedia
                         @endif
                     @endforeach
-                    <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, officiis, praesentium corporis odit labore voluptas quis voluptatem temporibus </p>
+                    @foreach ($about as $abouts)
+                        <p class="mb-2">{{ $abouts->text }}</p>
+                    @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6">
                     

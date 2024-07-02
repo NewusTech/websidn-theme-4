@@ -30,7 +30,7 @@ class TestimoniController extends Controller
             'image' => 'required|image',
         ]);
 
-        $path = $request->file('image')->store('testimonis', 'public');
+        $path = $request->file('image')->store('websidn/testimonis', 's3');
 
         Testimonis::create([
             'name' => $validated['name'],
@@ -61,7 +61,7 @@ class TestimoniController extends Controller
         $path = $testimoni->image;
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('testimonis', 'public');
+            $path = $request->file('image')->store('websidn/testimonis', 's3');
         }
 
         $testimoni->update([

@@ -47,7 +47,7 @@
         <div style="margin-left: 6%">
             @foreach ($logo as $logos)
                 @if ($logos->images)
-                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid " alt="Image" style="width: 200px; height: 65px; object-fit: cover; ">
+                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                 @else
                     Gambar tidak tersedia
                 @endif
@@ -78,7 +78,7 @@
         <div class="owl-carousel header-carousel position-relative">
             @foreach ($carousel as $carosel)
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="{{ asset('storage/' . $carosel->path) }}" alt="">
+                <img class="img-fluid" src="{{ Storage::disk('s3')->url($carosel->path) }}" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
                     <div class="container">
                         <div class="row justify-content-center">
@@ -104,7 +104,7 @@
                 <div class="col-lg-5 ps-lg-0" style="min-height: 400px;">
                     <div class="position-relative h-100">
                         <div class="video">
-                            <img class="position-absolute img-fluid w-100 h-100" src="{{ asset('storage/' . $abouts->gambar) }}" style="object-fit: cover;" alt="">
+                            <img class="position-absolute img-fluid w-100 h-100" src="{{ Storage::disk('s3')->url($abouts->gambar) }}" style="object-fit: cover;" alt="">
                             <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="{{ $abouts->video }}" data-bs-target="#videoModal">
                                 <span></span>
                             </button>
@@ -140,7 +140,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('storage/' . $layanan->image) }}" alt="">
+                            <img class="img-fluid" src="{{ Storage::disk('s3')->url($layanan->image) }}" alt="">
                         </div>
                         <div class="p-4 text-center border border-5 border-light border-top-0">
                             <h4 class="mb-3">{{ $layanan->judul }}</h4>
@@ -195,9 +195,9 @@
                 <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                     <div class="rounded overflow-hidden">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('storage/' . $galeri->images->path) }}" alt="">
+                            <img class="img-fluid w-100" src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="">
                             <div class="portfolio-overlay text-center " >
-                                <a class="btn btn-square btn-outline-light mx-1 mb-2" href="{{ asset('storage/' . $galeri->images->path) }}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-square btn-outline-light mx-1 mb-2" href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                 {{-- <h4 class="text-gray " data-lightbox="portfolio">Wedding Decor</h4> --}}
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
                         <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="{{ asset('storage/' . $tim->image) }}" alt="">
+                            <img class="img-fluid" src="{{ Storage::disk('s3')->url($tim->image) }}" alt="">
                             
                         </div>
                         <div class="text-center text-white border border-5 border-light border-top-0 p-4">
@@ -245,7 +245,7 @@
             <div class="owl-carousel testimonial-carousel">
                 @foreach ($testimoni as $review)
                 <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light p-2 mx-auto mb-3" src="{{ asset('storage/' . $review->image) }}" style="width: 90px; height: 90px;">
+                    <img class="img-fluid bg-light p-2 mx-auto mb-3" src="{{ Storage::disk('s3')->url($review->image) }}" style="width: 90px; height: 90px;">
                     <div class="testimonial-text text-center p-4">
                         <p>{{ $review->description }}</p>
                         <h5 class="mb-1">{{ $review->name }}</h5>
@@ -274,13 +274,14 @@
                 <div class="col-lg-4 col-md-6">
                     @foreach ($logo as $logos)
                         @if ($logos->images)
-                            <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                            <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                         @else
                             Gambar tidak tersedia
                         @endif
                     @endforeach
-                    <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, officiis, praesentium corporis odit labore voluptas quis voluptatem temporibus </p>
-                    
+                    @foreach ($about as $abouts)
+                        <p class="mb-2">{{ $abouts->text }}</p>
+                    @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6">
                     
@@ -294,7 +295,6 @@
                     <p><a class="text-white" href="{{ $kontak->youtube }}"><i class="fab fa-youtube text-primary me-2"></i> Youtube</a></p>
                     @endforeach
                 </div>
-                
             </div>
         </div>
         <div class="container">

@@ -29,7 +29,7 @@ class AboutController extends Controller
         ]);
 
         if ($request->hasFile('gambar')) {
-            $imagePath = $request->file('gambar')->store('uploads', 'public');
+            $imagePath = $request->file('gambar')->store('websidn/uploads', 's3');
             $validated['gambar'] = $imagePath;
         }
 
@@ -56,7 +56,7 @@ class AboutController extends Controller
         $about = Abouts::findOrFail($id);
 
         if ($request->hasFile('gambar')) {
-            $imagePath = $request->file('gambar')->store('uploads', 'public');
+            $imagePath = $request->file('gambar')->store('websidn/uploads', 's3');
             $validated['gambar'] = $imagePath;
         }
 

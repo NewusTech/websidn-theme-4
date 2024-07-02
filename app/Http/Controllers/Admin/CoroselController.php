@@ -30,7 +30,7 @@ class CoroselController extends Controller
             'path' => 'required|image',
         ]);
 
-        $path = $request->file('path')->store('corosels', 'public');
+        $path = $request->file('path')->store('websidn/corosels', 's3');
 
         Corosels::create([
             'resolusi' => $validated['resolusi'],
@@ -57,7 +57,7 @@ class CoroselController extends Controller
         $path = $corosel->path;
 
         if ($request->hasFile('path')) {
-            $path = $request->file('path')->store('corosels', 'public');
+            $path = $request->file('path')->store('websidn/corosels', 's3');
         }
 
         $corosel->update([

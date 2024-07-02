@@ -28,7 +28,7 @@ class CardController extends Controller
             'image' => 'required|image',
         ]);
 
-        $path = $request->file('image')->store('cards', 'public');
+        $path = $request->file('image')->store('websidn/cards', 's3');
 
         Cards::create([
             'kategori' => $validated['kategori'],
@@ -59,7 +59,7 @@ class CardController extends Controller
         $path = $card->image;
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('cards', 'public');
+            $path = $request->file('image')->store('websidn/cards', 's3');
         }
 
         $card->update([

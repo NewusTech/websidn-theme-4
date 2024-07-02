@@ -46,12 +46,12 @@
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
         <div style="margin-left: 6%">
             @foreach ($logo as $logos)
-                @if ($logos->images)
-                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid " alt="Image" style="width: 200px; height: 65px; object-fit: cover; ">
-                @else
-                    Gambar tidak tersedia
-                @endif
-            @endforeach
+            @if ($logos->images)
+                <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+            @else
+                Gambar tidak tersedia
+            @endif
+        @endforeach
         </div>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -73,7 +73,7 @@
 
     @foreach ($header as $headers)
     <!-- Page Header Start -->
-    <div class="container-fluid py-5 mb-2" style="background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('{{ asset('storage/' . $headers->images->path) }}') center center no-repeat; background-size: cover;">
+    <div class="container-fluid py-5 mb-2" style="background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
         <div class="container py-5">
             <h1 class="display-3 text-white mb-3 animated slideInDown">Layanan</h1>
             <nav aria-label="breadcrumb animated slideInDown">
@@ -99,7 +99,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('storage/' . $layanan->image) }}" alt="">
+                            <img class="img-fluid" src="{{ Storage::disk('s3')->url($layanan->image) }}" alt="">
                         </div>
                         <div class="p-4 text-center border border-5 border-light border-top-0">
                             <h4 class="mb-3">{{ $layanan->judul }}</h4>
@@ -148,13 +148,14 @@
                 <div class="col-lg-4 col-md-6">
                     @foreach ($logo as $logos)
                         @if ($logos->images)
-                            <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                            <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                         @else
                             Gambar tidak tersedia
                         @endif
                     @endforeach
-                    <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, officiis, praesentium corporis odit labore voluptas quis voluptatem temporibus </p>
-                    
+                    @foreach ($about as $abouts)
+                        <p class="mb-2">{{ $abouts->text }}</p>
+                    @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6">
                     
