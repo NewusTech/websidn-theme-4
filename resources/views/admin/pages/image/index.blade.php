@@ -52,7 +52,9 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('image.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Gambar</a>
+        @if (Auth::user()->name == 'SuperAdmin')
+            <a href="{{ route('image.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Gambar</a>
+        @endif
     </div>
     <br>
     <div class="container-fluid bg-white">
@@ -80,10 +82,12 @@
                                     <a href="{{ route('image.view', $image->id) }}" class="btn btn-info btn-sm"
                                         style="border-radius: 0;">View</a>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#deleteModal-{{ $image->id }}" style="border-radius: 0;">
-                                        Delete
-                                    </button>
+                                    @if (Auth::user()->name == 'SuperAdmin')
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#deleteModal-{{ $image->id }}" style="border-radius: 0;">
+                                            Delete
+                                        </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="deleteModal-{{ $image->id }}" tabindex="-1"

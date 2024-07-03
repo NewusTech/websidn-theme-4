@@ -50,162 +50,147 @@ route::get('/components', [ComponentsController::class, 'ComponentPage']);
 route::get('/insertLayanan', [InsertController::class, 'InsertPage']);
 route::get('/contact', [ContactController::class, 'ContactPage']);
 
-// Route::controller(LoginController::class)->group(function () {
-//     route::get('/login','LoginForm')->middleware('admin');
-//     route::post('/login','login');
-//     route::post('/logout','logout');
-// });
-
 Route::controller(LoginController::class)->group(function () {
-    route::get('/login','LoginForm');  // No middleware here
+    route::get('/login','LoginForm')->name('login');  // No middleware here
     route::post('/login','login');
     route::post('/logout','logout');
   });
-Route::controller(ImageController::class)->group(function () {
-    Route::get('/image', 'ImageIndex')->name('image.index');
-    Route::get('/image/create', 'ImageCreate')->name('image.create');
-    Route::post('/image', 'ImageStore')->name('image.store');
-    Route::get('/image/{id}/edit', 'ImageEdit')->name('image.edit');
-    Route::put('/image/{id}', 'ImageUpdate')->name('image.update');
-    Route::get('/image/{id}', 'ImageView')->name('image.view');
-    Route::delete('/image/{id}', 'ImageDelete')->name('image.delete');
-});
-Route::controller(TextController::class)->group(function () {
-    Route::get('/text', 'TextIndex')->name('text.index');
-    Route::get('/text/create', 'TextCreate')->name('text.create');
-    Route::post('/text', 'TextStore')->name('text.store');
-    Route::get('/text/{id}/edit', 'TextEdit')->name('text.edit');
-    Route::put('/text/{id}', 'TextUpdate')->name('text.update');
-    Route::get('/text/{id}', 'TextView')->name('text.view');
-    Route::delete('/text/{id}', 'TextDelete')->name('text.delete');
-});
-Route::controller(CoroselController::class)->group(function () {
-    Route::get('/corosel', 'CoroselIndex')->name('corosel.index');
-    Route::get('/corosel/create', 'CoroselCreate')->name('corosel.create');
-    Route::post('/corosel', 'CoroselStore')->name('corosel.store');
-    Route::get('/corosel/{id}/edit', 'CoroselEdit')->name('corosel.edit');
-    Route::put('/corosel/{id}', 'CoroselUpdate')->name('corosel.update');
-    Route::get('/corosel/{id}', 'CoroselView')->name('corosel.view');
-    Route::delete('/corosel/{id}', 'CoroselDelete')->name('corosel.delete');
-});
-Route::controller(CardController::class)->group(function () {
-    Route::get('/card', 'CardIndex')->name('card.index');
-    Route::get('/card/create', 'CardCreate')->name('card.create');
-    Route::post('/card', 'CardStore')->name('card.store');
-    Route::get('/card/{id}/edit', 'CardEdit')->name('card.edit');
-    Route::put('/card/{id}', 'CardUpdate')->name('card.update');
-    Route::get('/card/{id}', 'CardView')->name('card.view');
-    Route::delete('/card/{id}', 'CardDelete')->name('card.delete');
-});
-Route::controller(TestimoniController::class)->group(function () {
-    Route::get('/testimoni', 'TestimoniIndex')->name('testimoni.index');
-    Route::get('/testimoni/create', 'TestimoniCreate')->name('testimoni.create');
-    Route::post('/testimoni', 'TestimoniStore')->name('testimoni.store');
-    Route::get('/testimoni/{id}/edit', 'TestimoniEdit')->name('testimoni.edit');
-    Route::put('/testimoni/{id}', 'TestimoniUpdate')->name('testimoni.update');
-    Route::get('/testimoni/{id}', 'TestimoniView')->name('testimoni.view');
-    Route::delete('/testimoni/{id}', 'TestimoniDelete')->name('testimoni.delete');
-});
-Route::controller(PriceController::class)->group(function () {
-    Route::get('/price', 'PriceIndex')->name('price.index');
-    Route::get('/price/create', 'PriceCreate')->name('price.create');
-    Route::post('/price', 'PriceStore')->name('price.store');
-    Route::get('/price/{id}/edit', 'PriceEdit')->name('price.edit');
-    Route::put('/price/{id}', 'PriceUpdate')->name('price.update');
-    Route::get('/price/{id}', 'PriceView')->name('price.view');
-    Route::delete('/price/{id}', 'PriceDelete')->name('price.delete');
-});
-Route::controller(BlogController::class)->group(function () {
-    Route::get('/blogs', 'Blogindex')->name('blog.index');
-    Route::get('/blogs/create', 'Blogcreate')->name('blog.create');
-    Route::post('/blogs/store', 'Blogstore')->name('blog.store');
-    Route::get('/blogs/{id}/edit', 'Blogedit')->name('blog.edit');
-    Route::put('/blogs/{id}/update', 'Blogupdate')->name('blog.update');
-    Route::get('/blogs/{id}/show', 'Blogshow')->name('blog.show');
-    Route::delete('/blogs/{id}/destroy', 'Blogdestroy')->name('blog.destroy');
-});
-Route::controller(BlogkategoriController::class)->group(function () {
-    Route::get('/blogkategoris', 'Blogkategoriindex')->name('blogkategori.index');
-    Route::get('/blogkategoris/create', 'Blogkategoricreate')->name('blogkategori.create');
-    Route::post('/blogkategoris/store', 'Blogkategoristore')->name('blogkategori.store');
-    Route::get('/blogkategoris/{id}/edit', 'Blogkategoriedit')->name('blogkategori.edit');
-    Route::put('/blogkategoris/{id}/update', 'Blogkategoriupdate')->name('blogkategori.update');
-    Route::get('/blogkategoris/{id}/show', 'Blogkategorishow')->name('blogkategori.show');
-    Route::delete('/blogkategoris/{id}/destroy', 'Blogkategoridestroy')->name('blogkategori.destroy');
-});
-Route::controller(BlogtagController::class)->group(function () {
-    Route::get('/blogtags', 'Blogtagindex')->name('blogtag.index');
-    Route::get('/blogtags/create', 'Blogtagcreate')->name('blogtag.create');
-    Route::post('/blogtags/store', 'Blogtagstore')->name('blogtag.store');
-    Route::get('/blogtags/{id}/edit', 'Blogtagedit')->name('blogtag.edit');
-    Route::put('/blogtags/{id}/update', 'Blogtagupdate')->name('blogtag.update');
-    Route::get('/blogtags/{id}/show', 'Blogtagshow')->name('blogtag.show');
-    Route::delete('/blogtags/{id}/destroy', 'Blogtagdestroy')->name('blogtag.destroy');
-});
-Route::controller(BlogconsoleController::class)->group(function () {
-    Route::get('/blogconsoles', 'Blogconsoleindex')->name('blogconsole.index');
-    Route::get('/blogconsoles/create', 'Blogconsolecreate')->name('blogconsole.create');
-    Route::post('/blogconsoles/store', 'Blogconsolestore')->name('blogconsole.store');
-    Route::get('/blogconsoles/{id}/edit', 'Blogconsoleedit')->name('blogconsole.edit');
-    Route::put('/blogconsoles/{id}/update', 'Blogconsoleupdate')->name('blogconsole.update');
-    Route::get('/blogconsoles/{id}/show', 'Blogconsoleshow')->name('blogconsole.show');
-    Route::delete('/blogconsoles/{id}/destroy', 'Blogconsoledestroy')->name('blogconsole.destroy');
-});
 
-Route::controller(HomeController::class)->group(function () {
-    Route::get('/home', 'HomeIndex')->name('home.index');
-    Route::get('/home/create', 'HomeCreate')->name('home.create');
-    Route::post('/home', 'HomeStore')->name('home.store');
-    Route::get('/home/{id}/edit', 'HomeEdit')->name('home.edit');
-    Route::put('/home/{id}', 'HomeUpdate')->name('home.update');
-    Route::get('/home/{id}', 'HomeView')->name('home.view');
-    Route::delete('/home/{id}', 'HomeDelete')->name('home.delete');
+
+
+Route::prefix("admin")->namespace("admin")->middleware(["auth","admin"])->group(function(){
+    Route::prefix('')->group(function () {
+        Route::get('/image', [ImageController::class, 'ImageIndex'])->name('image.index');
+        Route::get('/image/create', [ImageController::class, 'ImageCreate'])->name('image.create');
+        Route::post('/image', [ImageController::class, 'ImageStore'])->name('image.store');
+        Route::get('/image/{id}/edit', [ImageController::class, 'ImageEdit'])->name('image.edit');
+        Route::put('/image/{id}', [ImageController::class, 'ImageUpdate'])->name('image.update');
+        Route::get('/image/{id}', [ImageController::class, 'ImageView'])->name('image.view');
+        Route::delete('/image/{id}', [ImageController::class, 'ImageDelete'])->name('image.delete');
+    
+        Route::get('/text', [TextController::class, 'TextIndex'])->name('text.index');
+        Route::get('/text/create', [TextController::class, 'TextCreate'])->name('text.create');
+        Route::post('/text', [TextController::class, 'TextStore'])->name('text.store');
+        Route::get('/text/{id}/edit', [TextController::class, 'TextEdit'])->name('text.edit');
+        Route::put('/text/{id}', [TextController::class, 'TextUpdate'])->name('text.update');
+        Route::get('/text/{id}', [TextController::class, 'TextView'])->name('text.view');
+        Route::delete('/text/{id}', [TextController::class, 'TextDelete'])->name('text.delete');
+   
+        Route::get('/corosel', [CoroselController::class, 'CoroselIndex'])->name('corosel.index');
+        Route::get('/corosel/create', [CoroselController::class, 'CoroselCreate'])->name('corosel.create');
+        Route::post('/corosel', [CoroselController::class, 'CoroselStore'])->name('corosel.store');
+        Route::get('/corosel/{id}/edit', [CoroselController::class, 'CoroselEdit'])->name('corosel.edit');
+        Route::put('/corosel/{id}', [CoroselController::class, 'CoroselUpdate'])->name('corosel.update');
+        Route::get('/corosel/{id}', [CoroselController::class, 'CoroselView'])->name('corosel.view');
+        Route::delete('/corosel/{id}', [CoroselController::class, 'CoroselDelete'])->name('corosel.delete');
+    
+        Route::get('/card', [CardController::class, 'CardIndex'])->name('card.index');
+        Route::get('/card/create', [CardController::class, 'CardCreate'])->name('card.create');
+        Route::post('/card', [CardController::class, 'CardStore'])->name('card.store');
+        Route::get('/card/{id}/edit', [CardController::class, 'CardEdit'])->name('card.edit');
+        Route::put('/card/{id}', [CardController::class, 'CardUpdate'])->name('card.update');
+        Route::get('/card/{id}', [CardController::class, 'CardView'])->name('card.view');
+        Route::delete('/card/{id}', [CardController::class, 'CardDelete'])->name('card.delete');
+        
+        // TestimoniController routes
+        Route::get('/testimoni', [TestimoniController::class, 'TestimoniIndex'])->name('testimoni.index');
+        Route::get('/testimoni/create', [TestimoniController::class, 'TestimoniCreate'])->name('testimoni.create');
+        Route::post('/testimoni', [TestimoniController::class, 'TestimoniStore'])->name('testimoni.store');
+        Route::get('/testimoni/{id}/edit', [TestimoniController::class, 'TestimoniEdit'])->name('testimoni.edit');
+        Route::put('/testimoni/{id}', [TestimoniController::class, 'TestimoniUpdate'])->name('testimoni.update');
+        Route::get('/testimoni/{id}', [TestimoniController::class, 'TestimoniView'])->name('testimoni.view');
+        Route::delete('/testimoni/{id}', [TestimoniController::class, 'TestimoniDelete'])->name('testimoni.delete');
+        
+        // PriceController routes
+        Route::get('/price', [PriceController::class, 'PriceIndex'])->name('price.index');
+        Route::get('/price/create', [PriceController::class, 'PriceCreate'])->name('price.create');
+        Route::post('/price', [PriceController::class, 'PriceStore'])->name('price.store');
+        Route::get('/price/{id}/edit', [PriceController::class, 'PriceEdit'])->name('price.edit');
+        Route::put('/price/{id}', [PriceController::class, 'PriceUpdate'])->name('price.update');
+        Route::get('/price/{id}', [PriceController::class, 'PriceView'])->name('price.view');
+        Route::delete('/price/{id}', [PriceController::class, 'PriceDelete'])->name('price.delete');
+        
+        // BlogController routes
+        Route::get('/blogs', [BlogController::class, 'Blogindex'])->name('blog.index');
+        Route::get('/blogs/create', [BlogController::class, 'Blogcreate'])->name('blog.create');
+        Route::post('/blogs/store', [BlogController::class, 'Blogstore'])->name('blog.store');
+        Route::get('/blogs/{id}/edit', [BlogController::class, 'Blogedit'])->name('blog.edit');
+        Route::put('/blogs/{id}/update', [BlogController::class, 'Blogupdate'])->name('blog.update');
+        Route::get('/blogs/{id}/show', [BlogController::class, 'Blogshow'])->name('blog.show');
+        Route::delete('/blogs/{id}/destroy', [BlogController::class, 'Blogdestroy'])->name('blog.destroy');
+        
+        // BlogkategoriController routes
+        Route::get('/blogkategoris', [BlogkategoriController::class, 'Blogkategoriindex'])->name('blogkategori.index');
+        Route::get('/blogkategoris/create', [BlogkategoriController::class, 'Blogkategoricreate'])->name('blogkategori.create');
+        Route::post('/blogkategoris/store', [BlogkategoriController::class, 'Blogkategoristore'])->name('blogkategori.store');
+        Route::get('/blogkategoris/{id}/edit', [BlogkategoriController::class, 'Blogkategoriedit'])->name('blogkategori.edit');
+        Route::put('/blogkategoris/{id}/update', [BlogkategoriController::class, 'Blogkategoriupdate'])->name('blogkategori.update');
+        Route::get('/blogkategoris/{id}/show', [BlogkategoriController::class, 'Blogkategorishow'])->name('blogkategori.show');
+        Route::delete('/blogkategoris/{id}/destroy', [BlogkategoriController::class, 'Blogkategoridestroy'])->name('blogkategori.destroy');
+        
+        // BlogtagController routes
+        Route::get('/blogtags', [BlogtagController::class, 'Blogtagindex'])->name('blogtag.index');
+        Route::get('/blogtags/create', [BlogtagController::class, 'Blogtagcreate'])->name('blogtag.create');
+        Route::post('/blogtags/store', [BlogtagController::class, 'Blogtagstore'])->name('blogtag.store');
+        Route::get('/blogtags/{id}/edit', [BlogtagController::class, 'Blogtagedit'])->name('blogtag.edit');
+        Route::put('/blogtags/{id}/update', [BlogtagController::class, 'Blogtagupdate'])->name('blogtag.update');
+        Route::get('/blogtags/{id}/show', [BlogtagController::class, 'Blogtagshow'])->name('blogtag.show');
+        Route::delete('/blogtags/{id}/destroy', [BlogtagController::class, 'Blogtagdestroy'])->name('blogtag.destroy');
+        
+        // BlogconsoleController routes
+        Route::get('/blogconsoles', [BlogconsoleController::class, 'Blogconsoleindex'])->name('blogconsole.index');
+        Route::get('/blogconsoles/create', [BlogconsoleController::class, 'Blogconsolecreate'])->name('blogconsole.create');
+        Route::post('/blogconsoles/store', [BlogconsoleController::class, 'Blogconsolestore'])->name('blogconsole.store');
+        Route::get('/blogconsoles/{id}/edit', [BlogconsoleController::class, 'Blogconsoleedit'])->name('blogconsole.edit');
+        Route::put('/blogconsoles/{id}/update', [BlogconsoleController::class, 'Blogconsoleupdate'])->name('blogconsole.update');
+        Route::get('/blogconsoles/{id}/show', [BlogconsoleController::class, 'Blogconsoleshow'])->name('blogconsole.show');
+        Route::delete('/blogconsoles/{id}/destroy', [BlogconsoleController::class, 'Blogconsoledestroy'])->name('blogconsole.destroy');
+        
+        // HomeController routes
+        Route::get('/home', [HomeController::class, 'HomeIndex'])->name('home.index');
+        Route::get('/home/create', [HomeController::class, 'HomeCreate'])->name('home.create');
+        Route::post('/home', [HomeController::class, 'HomeStore'])->name('home.store');
+        Route::get('/home/{id}/edit', [HomeController::class, 'HomeEdit'])->name('home.edit');
+        Route::put('/home/{id}', [HomeController::class, 'HomeUpdate'])->name('home.update');
+        Route::get('/home/{id}', [HomeController::class, 'HomeView'])->name('home.view');
+        Route::delete('/home/{id}', [HomeController::class, 'HomeDelete'])->name('home.delete');
+        
+        // GaleriController routes
+        Route::get('/galeri', [GaleriController::class, 'GaleriIndex'])->name('galeri.index');
+        Route::get('/galeri/create', [GaleriController::class, 'GaleriCreate'])->name('galeri.create');
+        Route::post('/galeri', [GaleriController::class, 'GaleriStore'])->name('galeri.store');
+        Route::get('/galeri/{id}/edit', [GaleriController::class, 'GaleriEdit'])->name('galeri.edit');
+        Route::put('/galeri/{id}', [GaleriController::class, 'GaleriUpdate'])->name('galeri.update');
+        Route::get('/galeri/{id}', [GaleriController::class, 'GaleriView'])->name('galeri.view');
+        Route::delete('/galeri/{id}', [GaleriController::class, 'GaleriDelete'])->name('galeri.delete');
+        
+        // FileController routes
+        Route::get('/file', [FileController::class, 'FileIndex'])->name('file.index');
+        Route::get('/file/create', [FileController::class, 'FileCreate'])->name('file.create');
+        Route::post('/file', [FileController::class, 'FileStore'])->name('file.store');
+        Route::get('/file/{id}/edit', [FileController::class, 'FileEdit'])->name('file.edit');
+        Route::put('/file/{id}', [FileController::class, 'FileUpdate'])->name('file.update');
+        Route::get('/file/{id}', [FileController::class, 'FileView'])->name('file.view');
+        Route::delete('/file/{id}', [FileController::class, 'FileDelete'])->name('file.delete');
+        
+        // ContactController routes
+        Route::get('/contact', [ContactController::class, 'ContactIndex'])->name('contact.index');
+        Route::get('/contact/create', [ContactController::class, 'ContactCreate'])->name('contact.create');
+        Route::post('/contact', [ContactController::class, 'ContactStore'])->name('contact.store');
+        Route::get('/contact/{id}/edit', [ContactController::class, 'ContactEdit'])->name('contact.edit');
+        Route::put('/contact/{id}', [ContactController::class, 'ContactUpdate'])->name('contact.update');
+        Route::get('/contact/{id}', [ContactController::class, 'ContactView'])->name('contact.view');
+        Route::delete('/contact/{id}', [ContactController::class, 'ContactDelete'])->name('contact.delete');
+        
+        // AboutController routes
+        Route::get('/about', [AboutController::class, 'AboutIndex'])->name('about.index');
+        Route::get('/about/create', [AboutController::class, 'AboutCreate'])->name('about.create');
+        Route::post('/about', [AboutController::class, 'AboutStore'])->name('about.store');
+        Route::get('/about/{id}/edit', [AboutController::class, 'AboutEdit'])->name('about.edit');
+        Route::put('/about/{id}', [AboutController::class, 'AboutUpdate'])->name('about.update');
+        Route::get('/about/{id}', [AboutController::class, 'AboutView'])->name('about.view');
+        Route::delete('/about/{id}', [AboutController::class, 'AboutDelete'])->name('about.delete');
+    });
 });
-Route::controller(GaleriController::class)->group(function () {
-    Route::get('/galeri', 'GaleriIndex')->name('galeri.index');
-    Route::get('/galeri/create', 'GaleriCreate')->name('galeri.create');
-    Route::post('/galeri', 'GaleriStore')->name('galeri.store');
-    Route::get('/galeri/{id}/edit', 'GaleriEdit')->name('galeri.edit');
-    Route::put('/galeri/{id}', 'GaleriUpdate')->name('galeri.update');
-    Route::get('/galeri/{id}', 'GaleriView')->name('galeri.view');
-    Route::delete('/galeri/{id}', 'GaleriDelete')->name('galeri.delete');
-});
-Route::controller(FileController::class)->group(function () {
-    Route::get('/file', 'FileIndex')->name('file.index');
-    Route::get('/file/create', 'FileCreate')->name('file.create');
-    Route::post('/file', 'FileStore')->name('file.store');
-    Route::get('/file/{id}/edit', 'FileEdit')->name('file.edit');
-    Route::put('/file/{id}', 'FileUpdate')->name('file.update');
-    Route::get('/file/{id}', 'FileView')->name('file.view');
-    Route::delete('/file/{id}', 'FileDelete')->name('file.delete');
-});
-Route::controller(ContactController::class)->group(function () {
-    Route::get('/contact', 'ContactIndex')->name('contact.index');
-    Route::get('/contact/create', 'ContactCreate')->name('contact.create');
-    Route::post('/contact', 'ContactStore')->name('contact.store');
-    Route::get('/contact/{id}/edit', 'ContactEdit')->name('contact.edit');
-    Route::put('/contact/{id}', 'ContactUpdate')->name('contact.update');
-    Route::get('/contact/{id}', 'ContactView')->name('contact.view');
-    Route::delete('/contact/{id}', 'ContactDelete')->name('contact.delete');
-});
-Route::controller(AboutController::class)->group(function () {
-    Route::get('/about', 'AboutIndex')->name('about.index');
-    Route::get('/about/create', 'AboutCreate')->name('about.create');
-    Route::post('/about', 'AboutStore')->name('about.store');
-    Route::get('/about/{id}/edit', 'AboutEdit')->name('about.edit');
-    Route::put('/about/{id}', 'AboutUpdate')->name('about.update');
-    Route::get('/about/{id}', 'AboutView')->name('about.view');
-    Route::delete('/about/{id}', 'AboutDelete')->name('about.delete');
-});
-// Route::controller(TextHomeController::class)->group(function () {
-//     route::get('/text','TextPage');
-//     route::get('/textlayanan','TextPageLayanan');
-//     route::get('/textGaleri','TextPageGaleri');
-//     route::get('/textAbout','TextPageAbout');
-// });
-// Route::controller(TextHomeController::class)->group(function () {
-//     route::get('/textview','TextPageView');
-//     route::get('/textedit','TextPageEdit');
-// });
 
 Route::get('/{slug}', [FrontController::class, 'BLogDetailShow']);

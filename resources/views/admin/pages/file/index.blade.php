@@ -50,7 +50,10 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('file.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah File Baru</a>
+        @if (Auth::user()->name == 'SuperAdmin')
+            <a href="{{ route('file.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah File
+                Baru</a>
+        @endif
     </div>
     <br>
     <div class="container-fluid bg-white">
@@ -78,8 +81,10 @@
                                     style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Apakah Anda yakin ingin menghapus file ini?')">Delete</button>
+                                    @if (Auth::user()->name == 'SuperAdmin')
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus file ini?')">Delete</button>
+                                    @endif
                                 </form>
                             </td>
                         </tr>

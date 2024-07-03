@@ -49,7 +49,9 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('price.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Price</a>
+        @if (Auth::user()->name == 'SuperAdmin')
+            <a href="{{ route('price.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Price</a>
+        @endif
     </div>
     <br>
     <div class="container-fluid bg-white">
@@ -88,7 +90,9 @@
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        @if (Auth::user()->name == 'SuperAdmin')
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        @endif
                                     </form>
                                 </div>
                             </td>

@@ -95,40 +95,6 @@
         </div>
     </div>
     <!-- Carousel End -->
-
-    <!-- About Start -->
-    <div class="container-fluid bg-light overflow-hidden px-lg-0">
-        <div class="container about px-lg-0">
-            <div class="row g-0 mx-lg-0">
-                @foreach ($about as $abouts)
-                <div class="col-lg-5 ps-lg-0" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <div class="video">
-                            <img class="position-absolute img-fluid w-100 h-100" src="{{ Storage::disk('s3')->url($abouts->gambar) }}" style="object-fit: cover;" alt="">
-                            <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="{{ $abouts->video }}" data-bs-target="#videoModal">
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="p-lg-5 pe-lg-0">
-                        <div class="section-title text-start">
-                            <h1 class="display-5 mb-4">Tentang Kami</h1>
-                        </div>
-                        <h2 class="mb-3">{{ $abouts->judul }}</h2>
-                        <p class="mb-4 pb-2">{{ $abouts->text }}</p>
-
-                        <a href="/tentang-kami" class="btn btn-primary py-3 px-5">Explore More</a>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-
     <!-- Service Start -->
     <div class="container-xxl py-3">
         <div class="container">
@@ -155,7 +121,7 @@
         </div>
     </div>
     <!-- Service End -->
-
+    
 
     <!-- Prices Start -->
     <div class="container-fluid bg-third overflow-hidden">
@@ -183,6 +149,64 @@
     </div>  
     <!-- Prices End -->
 
+    <!-- About Start -->
+    @foreach ($about as $abouts)
+    <div class="container-fluid bg-light overflow-hidden">
+        <div class="container-fluid about">
+            <div class="row g-0 mx-auto">
+                <div class="col-lg-12" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <div class="video">
+                            <img class="position-absolute img-fluid w-100 h-100" src="{{ Storage::disk('s3')->url($abouts->gambar) }}" style="object-fit: cover; width: 100%;" alt="">
+                            <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="{{ $abouts->video }}" data-bs-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="container-fluid bg-light overflow-hidden px-lg-0 mx-auto">
+        <div class="container about px-5 mx-auto">
+            <div class="row g-0 ">
+                <div class="col-lg-12 about-text wow fadeIn" data-wow-delay="0.5s">
+                    <div class="py-3 text-center mx-auto">
+                        <div class="section-title">
+                            <h1 class="display-5 mb-4">Tentang Kami</h1>
+                        </div>
+                        <h2 class="mb-3">{{ $abouts->judul }}</h2>
+                        <p class="mb-4 pb-2">{{ $abouts->text }}</p>
+                        <a href="/tentang-kami" class="btn btn-primary py-1 px-5">Jelajahi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    @endforeach
+    <!-- Modal Video -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 16:9 aspect ratio -->
+                    <div class="ratio ratio-16x9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                            allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+    
+
     <!-- Gallery Start -->
     <div class="container-xxl py-3 mb-3">
         <div class="container">
@@ -209,6 +233,7 @@
     </div>
     <!-- Gallery End -->
 
+    
     <!-- Team Start -->
     <div class="container-fluid bg-third py-3">
         <div class="container">

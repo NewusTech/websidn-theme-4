@@ -73,27 +73,27 @@
                 Section Item
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('image') }}">
+                <a class="nav-link" href="{{ url('admin/image') }}">
                     <i class="fas fa-fw fa-image"></i>
                     <span>Gambar</span>
                 </a>
-                <a class="nav-link" href="{{ url('corosel') }}">
+                <a class="nav-link" href="{{ url('admin/corosel') }}">
                     <i class="fas fa-fw fa-images"></i>
                     <span>Gambar Slider</span>
                 </a>
-                <a class="nav-link" href="{{ url('card') }}">
+                <a class="nav-link" href="{{ url('admin/card') }}">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Card</span>
                 </a>
-                <a class="nav-link" href="{{ url('text') }}">
+                <a class="nav-link" href="{{ url('admin/text') }}">
                     <i class="fas fa-fw fa-font"></i>
                     <span>Text</span>
                 </a>
-                <a class="nav-link" href="{{ url('testimoni') }}">
+                <a class="nav-link" href="{{ url('admin/testimoni') }}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Testimoni</span>
                 </a>
-                <a class="nav-link" href="{{ url('price') }}">
+                <a class="nav-link" href="{{ url('admin/price') }}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pricelist</span>
                 </a>
@@ -105,7 +105,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('home') }}">
+                <a class="nav-link" href="{{ url('admin/home') }}">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Beranda</span>
                 </a>
@@ -117,25 +117,25 @@
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Portofolio</span>
                 </a> --}}
-                <a class="nav-link" href="{{ url('galeri') }}">
+                <a class="nav-link" href="{{ url('admin/galeri') }}">
                     <i class="fas fa-fw fa-camera"></i>
                     <span>Galeri</span>
                 </a>
-                <a class="nav-link" href="{{ url('file') }}">
+                <a class="nav-link" href="{{ url('admin/file') }}">
                     <i class="fas fa-fw fa-download"></i>
                     <span>Tambahkan File</span>
                 </a>
-                <a class="nav-link" href="{{ url('about') }}">
+                <a class="nav-link" href="{{ url('admin/about') }}">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Tentang Kami</span>
                 </a>
-                <a class="nav-link" href="{{ url('contact') }}">
+                <a class="nav-link" href="{{ url('admin/contact') }}">
                     <i class="fas fa-fw fa-phone"></i>
                     <span>Hubungi Kami</span>
                 </a>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ url('blog') }}" data-toggle="collapse"
+                <a class="nav-link collapsed" href="{{ url('admin/blog') }}" data-toggle="collapse"
                     data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Blogs</span>
@@ -144,13 +144,16 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Blog:</h6>
-                        <a class="collapse-item" href="{{ url('blogs') }}"><i class="fas fa-fw fa-list"></i>Daftar
+                        <a class="collapse-item" href="{{ url('admin/blogs') }}"><i
+                                class="fas fa-fw fa-list"></i>Daftar
                             Blog</a>
-                        <a class="collapse-item" href="{{ url('blogkategoris') }}"><i class="fas fa-fw fa-pen"></i>Buat
+                        <a class="collapse-item" href="{{ url('admin/blogkategoris') }}"><i
+                                class="fas fa-fw fa-pen"></i>Buat
                             Kategori Blog</a>
-                        <a class="collapse-item" href="{{ url('blogtags') }}"><i class="fas fa-fw fa-pen"></i>Buat
+                        <a class="collapse-item" href="{{ url('admin/blogtags') }}"><i
+                                class="fas fa-fw fa-pen"></i>Buat
                             Kategori Tags</a>
-                        <a class="collapse-item" href="{{ url('blogconsoles') }}"><i
+                        <a class="collapse-item" href="{{ url('admin/blogconsoles') }}"><i
                                 class="fas fa-fw fa-globe"></i>Buat
                             Search Console</a>
                     </div>
@@ -196,7 +199,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/konsultasi">
                     <i class="fas fa-fw fa-phone"></i>
                     <span>Konsultasi</span></a>
             </li>

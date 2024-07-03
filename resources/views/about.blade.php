@@ -90,7 +90,7 @@
 
     <!-- About Start -->
     <div class="container-fluid bg-light overflow-hidden  px-lg-0">
-        <div class="container about px-lg-0">
+        <div class="container-fluid about px-lg-0">
             <div class="row g-0 mx-lg-0">
                 @foreach ($about as $abouts)
                 <div class="col-lg-5 ps-lg-0" style="min-height: 400px;">

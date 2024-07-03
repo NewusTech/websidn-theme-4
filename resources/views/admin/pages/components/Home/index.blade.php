@@ -47,7 +47,9 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('home.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Beranda</a>
+        @if (Auth::user()->name == 'SuperAdmin')
+            <a href="{{ route('home.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Beranda</a>
+        @endif
     </div>
     <br>
     <div class="container-fluid bg-white">
@@ -81,10 +83,12 @@
                                     <a href="{{ route('home.edit', $home->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     <a href="{{ route('home.view', $home->id) }}" class="btn btn-info btn-sm">View</a>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#deleteModal-{{ $home->id }}">
-                                        Delete
-                                    </button>
+                                    @if (Auth::user()->name == 'SuperAdmin')
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#deleteModal-{{ $home->id }}">
+                                            Delete
+                                        </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="deleteModal-{{ $home->id }}" tabindex="-1"

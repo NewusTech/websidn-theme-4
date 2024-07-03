@@ -21,15 +21,10 @@ class AdminMiddleware
         if (!Auth::check()) {
             return redirect()->route('login'); // Redirect to login route
         }
+        // if (Auth::user()->name=='Admin') {
+        //     return redirect()->route('login');
 
-        // Check if user has the 'admin' role
-        if (!Auth::user()->hasRole('admin')) {
-            // Option 1: Redirect to a specific unauthorized page
-            return redirect()->route('unauthorized');
-
-            // Option 2: Throw an authorization exception (more suitable for API routes)
-            // throw UnauthorizedException::fromRequest($request, 'You are not authorized to perform this action.');
-        }
+        // }
 
         return $next($request); // Allow request to proceed if user is authenticated and an admin
     }

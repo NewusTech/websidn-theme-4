@@ -48,8 +48,10 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('about.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah About
-            Baru</a>
+        @if (Auth::user()->name == 'SuperAdmin')
+            <a href="{{ route('about.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah About
+                Baru</a>
+        @endif
     </div>
     <br>
     <div class="container-fluid bg-white">
@@ -90,8 +92,10 @@
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus about ini?')">Delete</button>
+                                        @if (Auth::user()->name == 'SuperAdmin')
+                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus about ini?')">Delete</button>
+                                        @endif
                                     </form>
                                 </div>
                             </td>
