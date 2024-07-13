@@ -41,7 +41,9 @@
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                    Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the
+                    Terdapat tiga item daftar harga yang dapat anda isikan dengan mengisikan judul, item1. item2, item3,
+                    item4, item5 dan gambar. Panel ini dapat kamu manfaatkan untuk membuat daftar harga, layanan, atau
+                    paket. Dengan menekan tombol ubah kamu dapat menyesuiakan isi kontenya.
                     <code>.show</code> class.
                 </div>
             </div>
@@ -84,14 +86,14 @@
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
-                                    <a href="{{ route('price.edit', $price->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="{{ route('price.view', $price->id) }}" class="btn btn-info btn-sm">View</a>
+                                    <a href="{{ route('price.edit', $price->id) }}" class="btn btn-warning btn-sm">Ubah</a>
+                                    <a href="{{ route('price.view', $price->id) }}" class="btn btn-info btn-sm">Lihat</a>
                                     <form action="{{ route('price.delete', $price->id) }}" method="POST"
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         @if (Auth::user()->name == 'SuperAdmin')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                         @endif
                                     </form>
                                 </div>

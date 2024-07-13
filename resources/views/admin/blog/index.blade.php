@@ -91,7 +91,7 @@
                                     <span class="badge badge-info">{{ $tag->tags }}</span>
                                 @endforeach
                             </td>
-                            <td>{{ $blog->short_description }}</td>
+                            <td>{!! Str::words($blog->deskripsi, 10) !!}</td>
                             <td>{{ $blog->status == 1 ? 'Published' : 'Draft' }}</td>
                             <td>{{ $blog->date }}</td>
                             <td>

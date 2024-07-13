@@ -26,6 +26,12 @@
                     @endforeach
                 </select>
             </div>
+            @if ($image->path)
+                <div class="form-group">
+                    <label>Gambar Saat Ini</label><br>
+                    <img src="{{ Storage::disk('s3')->url($image->path) }}" alt="Gambar Home" style="max-width: 200px;">
+                </div>
+            @endif
             <div class="form-group">
                 <label for="id_text">Text</label>
                 <select name="id_text" class="form-control" required>

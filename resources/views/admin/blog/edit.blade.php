@@ -81,7 +81,7 @@
                 <label for="image">Image</label>
                 <input type="file" class="form-control" id="image" name="image">
                 @if ($blog->image)
-                    <img src="{{ Storage::disk('s3')->url($$blog->image) }}" alt="{{ $blog->judul }}" class="mt-2"
+                    <img src="{{ Storage::disk('s3')->url($blog->image) }}" alt="{{ $blog->judul }}" class="mt-2"
                         width="100">
                 @endif
             </div>

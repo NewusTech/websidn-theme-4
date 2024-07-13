@@ -20,6 +20,9 @@
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/websidn.png') }}">
 
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -55,19 +58,7 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            {{-- <div class="sidebar-heading">
-                Section Layout
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('image') }}">
-                    <i class="fas fa-fw fa-images"></i>
-                    <span>Header</span>
-                </a>
-                <a class="nav-link" href="{{ url('image') }}">
-                    <i class="fas fa-fw fa-images"></i>
-                    <span>Footer</span>
-                </a>
-            </li> --}}
+
             <!-- Heading -->
             <div class="sidebar-heading">
                 Section Item
@@ -109,14 +100,6 @@
                     <i class="fas fa-fw fa-home"></i>
                     <span>Beranda</span>
                 </a>
-                {{-- <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Layanan/Produk</span>
-                </a> --}}
-                {{-- <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-envelope"></i>
-                    <span>Portofolio</span>
-                </a> --}}
                 <a class="nav-link" href="{{ url('admin/galeri') }}">
                     <i class="fas fa-fw fa-camera"></i>
                     <span>Galeri</span>
@@ -199,7 +182,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="/konsultasi">
+                <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-phone"></i>
                     <span>Konsultasi</span></a>
             </li>
@@ -222,7 +205,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -397,7 +380,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                <span class="mr-2 d-none d-lg-inline text-white small">
                                     {{ Auth::user()->name }}
                                 </span>
                                 <div class="img-profile rounded-circle profile-initial">
@@ -416,14 +399,14 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a> --}}
-                                <a class="dropdown-item" href="/">
+                                <a class="dropdown-item" href="/konsultasi">
                                     <i class="fas fa-phone fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Konsultasi
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal"
                                     data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-white"></i>
                                     Logout
                                 </a>
                             </div>
@@ -496,6 +479,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
 
 </body>
 

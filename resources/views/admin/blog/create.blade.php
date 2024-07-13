@@ -94,9 +94,9 @@
         referrerpolicy="origin"></script>
     <script>
         tinymce.init({
-            selector: 'textarea#deskripsi', // Replace this CSS selector to match the placeholder element for TinyMCE
-            plugins: 'code table lists',
-            toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+            selector: 'textarea#deskripsi',
+            plugins: 'code table lists link image media',
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | code | table | link image media',
         });
     </script>
 @endsection

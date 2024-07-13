@@ -41,7 +41,9 @@
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                    Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the
+                    klik tombol "Tambah Gambar". Pada halaman ini, Anda akan menemukan form yang terdiri dari kolom input
+                    untuk judul gambar, deskripsi gambar, tombol untuk mengunggah gambar, pilihan jenis gambar (Portrait
+                    atau Landscape), dan tombol simpan
                     <code>.show</code> class.
                 </div>
             </div>
@@ -79,13 +81,13 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('galeri.edit', $galeri->id) }}"
-                                        class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="{{ route('galeri.view', $galeri->id) }}" class="btn btn-info btn-sm">View</a>
+                                        class="btn btn-warning btn-sm">Ubah</a>
+                                    <a href="{{ route('galeri.view', $galeri->id) }}" class="btn btn-info btn-sm">Lihat</a>
                                     <form action="{{ route('galeri.delete', $galeri->id) }}" method="POST"
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                     </form>
                                 </div>
                             </td>

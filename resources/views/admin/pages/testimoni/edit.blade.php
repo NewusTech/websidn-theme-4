@@ -29,6 +29,13 @@
                 <label for="image">Image</label>
                 <input type="file" name="image" class="form-control">
             </div>
+            @if ($testimoni->image)
+                <div class="form-group">
+                    <label>Gambar Saat Ini</label><br>
+                    <img src="{{ Storage::disk('s3')->url($testimoni->image) }}" alt="Gambar Testimoni"
+                        style="max-width: 200px;">
+                </div>
+            @endif
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

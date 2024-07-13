@@ -80,14 +80,14 @@
                             <td><img src="{{ Storage::disk('s3')->url($card->image) }}" width="100"></td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
-                                    <a href="{{ route('card.edit', $card->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="{{ route('card.view', $card->id) }}" class="btn btn-info btn-sm">View</a>
+                                    <a href="{{ route('card.edit', $card->id) }}" class="btn btn-warning btn-sm">Ubah</a>
+                                    <a href="{{ route('card.view', $card->id) }}" class="btn btn-info btn-sm">Lihat</a>
                                     <form action="{{ route('card.delete', $card->id) }}" method="POST"
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         @if (Auth::user()->name == 'SuperAdmin')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                         @endif
                                     </form>
                                 </div>

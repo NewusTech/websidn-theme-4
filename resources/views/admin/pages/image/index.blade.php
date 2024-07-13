@@ -78,14 +78,14 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('image.edit', $image->id) }}" class="btn btn-warning btn-sm"
-                                        style="border-radius: 0;">Edit</a>
+                                        style="border-radius: 0;">Ubah</a>
                                     <a href="{{ route('image.view', $image->id) }}" class="btn btn-info btn-sm"
-                                        style="border-radius: 0;">View</a>
+                                        style="border-radius: 0;">Lihat</a>
                                     <!-- Button trigger modal -->
                                     @if (Auth::user()->name == 'SuperAdmin')
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                             data-target="#deleteModal-{{ $image->id }}" style="border-radius: 0;">
-                                            Delete
+                                            Hapus
                                         </button>
                                     @endif
 

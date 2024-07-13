@@ -99,7 +99,7 @@
                         </div>
             
                         <div class="bd-desc">
-                            <p>{{$blog->deskripsi}}</p>
+                            <td>{!! $blog->deskripsi !!}</td>
                         </div>
                         
                         

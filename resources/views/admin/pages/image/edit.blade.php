@@ -25,6 +25,12 @@
                 <label for="path">Image</label>
                 <input type="file" name="path" class="form-control">
             </div>
+            @if ($image->path)
+                <div class="form-group">
+                    <label>Gambar Saat Ini</label><br>
+                    <img src="{{ Storage::disk('s3')->url($image->path) }}" alt="Gambar Image" style="max-width: 200px;">
+                </div>
+            @endif
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

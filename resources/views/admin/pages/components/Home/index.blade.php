@@ -39,7 +39,8 @@
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                    Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the
+                    Terdapat 3 item yang terdiri dari kategori Logo, Header dan Tentang Kami. Anda dapat menyesuaikan gambar
+                    dan text dengan cara menekan tombol Ubah.
                     <code>.show</code> class.
                 </div>
             </div>
@@ -80,13 +81,13 @@
                             <td>{{ $home->texts->paragraph }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
-                                    <a href="{{ route('home.edit', $home->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="{{ route('home.view', $home->id) }}" class="btn btn-info btn-sm">View</a>
+                                    <a href="{{ route('home.edit', $home->id) }}" class="btn btn-warning btn-sm">Ubah</a>
+                                    <a href="{{ route('home.view', $home->id) }}" class="btn btn-info btn-sm">Lihat</a>
                                     <!-- Button trigger modal -->
                                     @if (Auth::user()->name == 'SuperAdmin')
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                             data-target="#deleteModal-{{ $home->id }}">
-                                            Delete
+                                            Hapus
                                         </button>
                                     @endif
 

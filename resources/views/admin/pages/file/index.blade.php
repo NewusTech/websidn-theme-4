@@ -42,7 +42,8 @@
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                    Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the
+                    Terdapat 3 item yang terdiri dari kategori Brosur, Potrait dan Portofolio. Anda dapat menyesuaikan file
+                    dengan cara menekan tombol Ubah.
                     <code>.show</code> class.
                 </div>
             </div>
@@ -75,15 +76,16 @@
                             <td><a href="{{ Storage::disk('s3')->url($file->path) }}" target="_blank">Download</a></td>
                             <td>
                                 <a href="{{ route('file.edit', ['id' => $file->id]) }}"
-                                    class="btn btn-primary btn-sm">Edit</a>
-                                <a href="{{ route('file.view', ['id' => $file->id]) }}" class="btn btn-info btn-sm">View</a>
+                                    class="btn btn-primary btn-sm">Ubah</a>
+                                <a href="{{ route('file.view', ['id' => $file->id]) }}"
+                                    class="btn btn-info btn-sm">Lihat</a>
                                 <form action="{{ route('file.delete', ['id' => $file->id]) }}" method="POST"
                                     style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     @if (Auth::user()->name == 'SuperAdmin')
                                         <button type="submit" class="btn btn-danger btn-sm"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus file ini?')">Delete</button>
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus file ini?')">Hapus</button>
                                     @endif
                                 </form>
                             </td>

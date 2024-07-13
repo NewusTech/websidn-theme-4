@@ -74,12 +74,12 @@
                             <td>{{ $text->paragraph }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
-                                    <a href="{{ route('text.edit', $text->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="{{ route('text.view', $text->id) }}" class="btn btn-info btn-sm">View</a>
+                                    <a href="{{ route('text.edit', $text->id) }}" class="btn btn-warning btn-sm">Ubah</a>
+                                    <a href="{{ route('text.view', $text->id) }}" class="btn btn-info btn-sm">Lihat</a>
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                         data-target="#deleteModal-{{ $text->id }}">
-                                        Delete
+                                        Hapus
                                     </button>
 
                                     <!-- Modal -->

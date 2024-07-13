@@ -41,7 +41,8 @@
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                    Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the
+                    Dengan menekan tombol tambah Testimoni, anda dapat menambah daftar testimoni dari pelanggan anda dari
+                    mengisikan nama, pekerjaan, pendapat/deskripsi, dan foto
                     <code>.show</code> class.
                 </div>
             </div>
@@ -77,14 +78,14 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('testimoni.edit', $testimoni->id) }}"
-                                        class="btn btn-warning btn-sm">Edit</a>
+                                        class="btn btn-warning btn-sm">Ubah</a>
                                     <a href="{{ route('testimoni.view', $testimoni->id) }}"
-                                        class="btn btn-info btn-sm">View</a>
+                                        class="btn btn-info btn-sm">Lihat</a>
                                     <form action="{{ route('testimoni.delete', $testimoni->id) }}" method="POST"
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                     </form>
                                 </div>
                             </td>

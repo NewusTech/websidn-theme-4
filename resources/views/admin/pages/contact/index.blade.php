@@ -40,7 +40,8 @@
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                    Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the
+                    Disediakan item tentang kami yang berisikan WhatsApp, Facebook, Instagram, TikTok, Youtube, LinkedIn dan
+                    Map dengan menekan tombol ubah anda dapat menyesuaikan konten didalamnya.
                     <code>.show</code> class.
                 </div>
             </div>
@@ -81,14 +82,14 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('contact.edit', $contact->id) }}"
-                                        class="btn btn-warning btn-sm">Edit</a>
+                                        class="btn btn-warning btn-sm">Ubah</a>
                                     <a href="{{ route('contact.view', $contact->id) }}"
-                                        class="btn btn-info btn-sm">View</a>
+                                        class="btn btn-info btn-sm">Lihat</a>
                                     <form action="{{ route('contact.delete', $contact->id) }}" method="POST"
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                     </form>
                                 </div>
                             </td>

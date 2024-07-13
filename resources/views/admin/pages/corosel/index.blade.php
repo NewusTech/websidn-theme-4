@@ -78,16 +78,16 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('corosel.edit', $corosel->id) }}" class="btn btn-warning btn-sm"
-                                        style="border-radius: 0;">Edit</a>
+                                        style="border-radius: 0;">Ubah</a>
                                     <a href="{{ route('corosel.view', $corosel->id) }}" class="btn btn-info btn-sm"
-                                        style="border-radius: 0;">View</a>
+                                        style="border-radius: 0;">Lihat</a>
                                     <form action="{{ route('corosel.delete', $corosel->id) }}" method="POST"
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         @if (Auth::user()->name == 'SuperAdmin')
                                             <button type="submit" class="btn btn-danger btn-sm"
-                                                style="border-radius: 0;">Delete</button>
+                                                style="border-radius: 0;">Hapus</button>
                                         @endif
                                     </form>
                                 </div>

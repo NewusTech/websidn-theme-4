@@ -41,6 +41,12 @@
                 <label for="image">Image</label>
                 <input type="file" name="image" class="form-control" value="{{ $price->image }}">
             </div>
+            @if ($price->image)
+                <div class="form-group">
+                    <label>Gambar Saat Ini</label><br>
+                    <img src="{{ Storage::disk('s3')->url($price->image) }}" alt="Gambar Price" style="max-width: 200px;">
+                </div>
+            @endif
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
